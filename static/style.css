@@ -1,0 +1,51 @@
+html,
+body{
+	margin: 0px;
+	height: 100%;
+}
+
+.main{
+	min-height: 100%;
+	margin: 15;
+	padding: 5px;
+}
+
+footer,
+.d-flex{
+	color: ghostwhite;	
+}
+
+footer,
+.text-center{
+	color: darkcyan;
+	background: black;
+  	font-family: roman;
+  	font-size: x-large;
+  	position: relative; 	
+}
+
+footer,
+a,
+i:hover{
+	color:darkcyan;
+	
+}
+
+footer,
+.col-md-3
+p:hover{
+	color:whitesmoke;
+	
+}
+
+footer,
+.col-md-2
+p:hover{
+	color:whitesmoke;
+	
+}
+
+footer,
+.p-4:hover{
+	color:whitesmoke;
+}

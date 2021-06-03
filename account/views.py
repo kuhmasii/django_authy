@@ -3,7 +3,6 @@ from django.shortcuts import redirect, render
 from .forms import LoginForm, RegisterForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -45,7 +44,7 @@ def register_view(request, *args, **kwargs):
 
             if user:
                 login(request, user)
-                return HttpResponse("<h1>Welcome to your page</h1>")
+                return redirect("account:dashboard")
             else:
                 request.session["register_error "] = 1  # True
 
@@ -59,8 +58,7 @@ def register_view(request, *args, **kwargs):
 def login_view(request, *args, **kwargs):
 
     form = LoginForm()
-    print(request.user)
-    print(request.session.items())
+
     if request.method == 'POST':
         form = LoginForm(request.POST)
 
@@ -79,8 +77,7 @@ def login_view(request, *args, **kwargs):
             if user:
                 # also check if user is_active...
                 login(request, user)
-                return HttpResponse("<h1>Welcome to your page</h1>")
-                # return redirect("")
+                return redirect("account:dashboard")
             else:
                 request.session["invalid_user"] = 1  # True
 
@@ -90,6 +87,14 @@ def login_view(request, *args, **kwargs):
                     )
                 )
 
+@login_required
+def dashboard(request, *args, **kwargs):
+    name = request.user
+    return render(
+        request, "dashboard.html", dict(
+        name=name
+        )
+    )
 
 @login_required
 def logout_view(request):
