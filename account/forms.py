@@ -75,3 +75,7 @@ class LoginForm(forms.Form):
             )
 
         return username
+
+
+class searchForm(forms.Form):
+    search = forms.CharField(max_length=50, label="Search Word")

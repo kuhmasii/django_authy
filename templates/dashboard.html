@@ -2,8 +2,36 @@
 
 
 {% block content %}
-<h1>Welcome to your page</h1><br>
-<h3>
-    {{name}}
-</h3>
+<div class="row">
+    <h1 class="text-dark my-2">DICTIONARY APP</h1>
+    <h1 class="text-light text-center my-5">Welcome to your page <b class="text-warning">{{ name | title }}</b></h1>
+    <div class="col my-3 text-secondary">
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form_ser.as_p }}
+            <input type="submit" value="Search">
+        </form>
+    </div>
+    <div class="col text-success my-3">
+        {% if word_searched_list %}
+        {% for ser in word_searched_list %}
+        <ul>
+            <h3>
+                <b>
+                    <li>{{ ser }}</li>
+                </b>
+            </h3>
+        </ul>
+        {% endfor %}
+        {% else %}
+        <ul>
+            <h3>
+                <b>
+                    <li>{{ word_searched_str }}</li>
+                </b>
+            </h3>
+        </ul>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

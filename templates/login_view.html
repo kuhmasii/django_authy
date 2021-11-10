@@ -7,9 +7,13 @@ class="nav-link active"
 {% endblock %}
 
 {% block content %}
-<form action="{% url 'account:login_view' %}" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Login">
-</form>
+<div class="row my-5">
+    <div class="col">
+        <form action="{% url 'account:login_view' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Login">
+        </form>
+    </div>
+</div>
 {% endblock %}
